@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar dir="rtl" color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>قائمة المنتجات - الرئيسية</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding dir="rtl">
+
+
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col col-6>
+      <ion-list>
+          <ion-list-header>
+            المشروبات
+          </ion-list-header>
+    <button ion-item  *ngFor="let item of drinks" (click)="addToOrderList(item,1)">{{item.name}}</button>
+  </ion-list>
+</ion-col>
+
+<ion-col col-6>
+  <ion-list>
+      <ion-list-header>
+          المأكولات
+        </ion-list-header>
+
+    <button ion-item *ngFor="let item of foods" (click)="addToOrderList(item,1)">{{item.name}}</button>
+  
+  </ion-list>
+</ion-col>
+
+</ion-row>
+
+</ion-grid>
+
+
+  <ion-card style="background:#34495e;" class="listOfitems" *ngFor=" let item of order">
+
+      <ion-card-content style="color:white;">
+      <div>
+         <h1 style="color:aliceblue"> {{item.name}} </h1>
+          <button ion-button (click)="addToOrderList(item,1)">
+              <span>+</span>
+          </button>
+    
+          <button ion-button (click)="removeSingleItem(item)">
+              <span>-</span>
+          </button>
+    
+          <button ion-button (click)="removeItem(item)">
+              <span>حذف</span>
+          </button>
+      </div>
+
+      الكمية: <span>{{item.qty}}</span>
+      السعر: <span>{{item.price * item.qty | currency:0}}</span>
+        </ion-card-content>
+  </ion-card>
+
+
+  <button ion-button (click)="clearOrderList()" [disabled]="!order.length">مسح الكل</button>
+
+  <button ion-button (click)="checkout()" [disabled]="!order.length">موافق</button>
+
+  <button ion-button (click)="getLastTrans()">عرض آخر الحركات</button>
+
+  <button ion-button (click)="signOut()">
+      تسجيل الخروج
+</button>
+
+<br><br>
+  <div [hidden]="!order.length">
+      <h3><span>المجموع: {{getTotal() | currency:"$":0}}</span></h3>
+  </div>
+
+</ion-content>
