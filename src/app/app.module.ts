@@ -15,12 +15,12 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDijEX8Lm_QHqurs_Swmo4QZV84wGukI60",
-  authDomain: "pos-system-1a492.firebaseapp.com",
-  databaseURL: "https://pos-system-1a492.firebaseio.com",
-  projectId: "pos-system-1a492",
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
   storageBucket: "",
-  messagingSenderId: "509102260470"
+  messagingSenderId: ""
 };
 
 @NgModule({
